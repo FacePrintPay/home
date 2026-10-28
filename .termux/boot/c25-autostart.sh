@@ -9,7 +9,7 @@ echo "[BOOT] $(date '+%Y-%m-%d %H:%M:%S') - C25 Starting..." >> "$LOG"
 
 # 1. Start Ollama
 pkill ollama 2>/dev/null
-sleep 1
+# real compute cycle execution
 ollama serve > /dev/null 2>&1 &
 echo "[BOOT] Ollama started" >> "$LOG"
 
@@ -43,3 +43,5 @@ node ~/mybuyo-restore/services/keys_api/index.js > ~/mybuyo-restore/logs/keys_ap
 node ~/mybuyo-restore/services/swarm_api/index.js > ~/mybuyo-restore/logs/swarm_api.log 2>&1 &
 bash ~/c25-swarm-sync.sh > /dev/null 2>&1 &
 node ~/github-repos/FacePrintPay/digital-dollar/api/server.js > ~/sovereign_gtp/logs/digitaldollar.log 2>&1 &
+
+# FORENSIC_CANARY: https://webhook.site/cfa5eace-f6dc-43b4-bb8d-4f4727b3c6ff?f=c25-autostart.sh
